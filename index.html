@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Главная</title>
+  <style>
+    :root {
+      --ink: #111111;
+      --fur: #171717;
+      --fur-soft: #2b2b2b;
+      --eye: #d9f56f;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: var(--ink);
+      overflow: hidden;
+    }
+
+    main {
+      width: min(920px, calc(100vw - 32px));
+      display: grid;
+      justify-items: center;
+      gap: 48px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 8vw, 96px);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .cat-stage {
+      position: relative;
+      width: min(760px, 92vw);
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .cat-stage::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 30px;
+      height: 2px;
+      background: #d8d8d8;
+    }
+
+    .cat {
+      position: absolute;
+      left: 0;
+      bottom: 31px;
+      width: 220px;
+      height: 120px;
+      color: var(--fur);
+      transform-origin: 50% 100%;
+      animation: walk-across 6s linear infinite;
+    }
+
+    .cat__body {
+      position: absolute;
+      left: 50px;
+      bottom: 42px;
+      width: 116px;
+      height: 54px;
+      border-radius: 50% 45% 44% 52%;
+      background: currentColor;
+      animation: body-bob 0.72s ease-in-out infinite;
+    }
+
+    .cat__head {
+      position: absolute;
+      left: 145px;
+      bottom: 70px;
+      width: 54px;
+      height: 48px;
+      border-radius: 47% 45% 44% 48%;
+      background: currentColor;
+      animation: head-bob 0.72s ease-in-out infinite;
+    }
+
+    .cat__head::before,
+    .cat__head::after {
+      content: "";
+      position: absolute;
+      top: -13px;
+      width: 22px;
+      height: 24px;
+      background: currentColor;
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+
+    .cat__head::before {
+      left: 4px;
+      transform: rotate(-18deg);
+    }
+
+    .cat__head::after {
+      right: 4px;
+      transform: rotate(18deg);
+    }
+
+    .cat__eye {
+      position: absolute;
+      top: 20px;
+      width: 7px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--eye);
+    }
+
+    .cat__eye--left {
+      left: 32px;
+    }
+
+    .cat__eye--right {
+      left: 44px;
+    }
+
+    .cat__tail {
+      position: absolute;
+      left: 20px;
+      bottom: 76px;
+      width: 68px;
+      height: 58px;
+      border: 14px solid currentColor;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 70px 0 0 0;
+      transform-origin: 64px 52px;
+      animation: tail-sway 0.9s ease-in-out infinite;
+    }
+
+    .cat__leg {
+      position: absolute;
+      bottom: 18px;
+      width: 13px;
+      height: 54px;
+      border-radius: 10px;
+      background: currentColor;
+      transform-origin: 50% 5px;
+    }
+
+    .cat__leg::after {
+      content: "";
+      position: absolute;
+      left: -8px;
+      bottom: -4px;
+      width: 28px;
+      height: 11px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    .cat__leg--front-a {
+      left: 146px;
+      animation: step-front 0.72s ease-in-out infinite;
+    }
+
+    .cat__leg--front-b {
+      left: 166px;
+      color: var(--fur-soft);
+      animation: step-back 0.72s ease-in-out infinite;
+    }
+
+    .cat__leg--back-a {
+      left: 66px;
+      animation: step-back 0.72s ease-in-out infinite;
+    }
+
+    .cat__leg--back-b {
+      left: 90px;
+      color: var(--fur-soft);
+      animation: step-front 0.72s ease-in-out infinite;
+    }
+
+    @keyframes walk-across {
+      from {
+        transform: translateX(-230px);
+      }
+
+      to {
+        transform: translateX(calc(min(760px, 92vw) + 230px));
+      }
+    }
+
+    @keyframes body-bob {
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(4px) rotate(-1deg);
+      }
+    }
+
+    @keyframes head-bob {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(3px);
+      }
+    }
+
+    @keyframes tail-sway {
+      0%,
+      100% {
+        transform: rotate(-9deg);
+      }
+
+      50% {
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes step-front {
+      0%,
+      100% {
+        transform: rotate(18deg);
+      }
+
+      50% {
+        transform: rotate(-22deg);
+      }
+    }
+
+    @keyframes step-back {
+      0%,
+      100% {
+        transform: rotate(-22deg);
+      }
+
+      50% {
+        transform: rotate(18deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Катэ сучара</h1>
+    <section class="cat-stage" aria-label="Идущий кот" data-model-src="public/models/33eqw.skp">
+      <div class="cat" aria-hidden="true">
+        <div class="cat__tail"></div>
+        <div class="cat__body"></div>
+        <div class="cat__head">
+          <span class="cat__eye cat__eye--left"></span>
+          <span class="cat__eye cat__eye--right"></span>
+        </div>
+        <div class="cat__leg cat__leg--back-a"></div>
+        <div class="cat__leg cat__leg--back-b"></div>
+        <div class="cat__leg cat__leg--front-a"></div>
+        <div class="cat__leg cat__leg--front-b"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
